@@ -1,0 +1,35 @@
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "8080:80"
+    depends_on:
+      - server_01
+      - server_02
+      - server_03
+
+  server_01:
+    build: .
+    container_name: server_01
+    environment:
+      SERVER_NAME: "Servidor 01"
+    expose:
+      - "8000"
+
+  server_02:
+    build: .
+    container_name: server_02
+    environment:
+      SERVER_NAME: "Servidor 02"
+    expose:
+      - "8000"
+
+  server_03:
+    build: .
+    container_name: server_03
+    environment:
+      SERVER_NAME: "Servidor 03"
+    expose:
+      - "8000"
