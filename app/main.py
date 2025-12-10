@@ -5,6 +5,7 @@ from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+import uvicorn
 
 app = FastAPI()
 
@@ -38,4 +39,13 @@ async def root(request: Request):
             "container_id": container_id,
             "bg_color": bg_color,
         },
+    )
+
+
+if __name__ == "__main__":
+    uvicorn.run(
+        app="app.main:app",
+        host="0.0.0.0",
+        port=8000,
+        log_config=None,
     )

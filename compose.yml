@@ -11,7 +11,7 @@ services:
       - server_03
 
   server_01:
-    build: .
+    image: load-balancer-nginx:latest
     container_name: server_01
     environment:
       SERVER_NAME: "Servidor 01"
@@ -19,7 +19,7 @@ services:
       - "8000"
 
   server_02:
-    build: .
+    image: load-balancer-nginx:latest
     container_name: server_02
     environment:
       SERVER_NAME: "Servidor 02"
@@ -27,7 +27,7 @@ services:
       - "8000"
 
   server_03:
-    build: .
+    image: load-balancer-nginx:latest
     container_name: server_03
     environment:
       SERVER_NAME: "Servidor 03"
