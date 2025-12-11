@@ -8,4 +8,10 @@ WORKDIR /app
 
 RUN uv sync --frozen --no-cache
 
-CMD ["/app/.venv/bin/uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD [ \
+    "/app/.venv/bin/uvicorn", "app.main:app", \
+    "--host", "0.0.0.0", \
+    "--port", "8000", \ 
+    "--proxy-headers", \
+    "--forwarded-allow-ips", "*" \
+    ]
